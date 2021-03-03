@@ -1,0 +1,40 @@
+﻿@page
+@model Index2Model
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<head>
+    <link href="//twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div>
+    <form method="post">
+        <div class="form-group">
+        <label >Name</label>
+        <input type="text" asp-for="Name" />
+
+        <label >Desription</label>
+        <input type="text" asp-for=Desription/>
+
+        <label >Category</label>
+        
+        <input type="text" asp-for="Category" />
+
+        <label >Begin Price</label>
+        <input type="number" step=".01" asp-for="BeginPrice"/>
+
+        <label >Redemption price</label>
+        <input type="number" step=".01" asp-for="RedemtPrice" />
+
+          <label >Time for lot working</label>
+            <input type ="number" max="72" asp-for="Time"/>
+        <input type="submit" />
+        </div>
+    </form>
+
+</div>

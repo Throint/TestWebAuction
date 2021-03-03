@@ -1,0 +1,22 @@
+﻿@page
+@model TestRazor.Pages.CreateUserModel
+@{
+}
+
+<div>
+    <form method="post">
+        <label> Enter your first name</label>
+        <input type="text" asp-for="FName" />
+        <label >Enter your second name</label>
+        <input type="text" asp-for="SName" />
+        <label>Enter your email</label>
+        <input type="email" asp-for="Email" />
+        <label >Enter your password</label>
+        <input type="password" asp-for=Input_pass />
+        <label >Confirm your password</label>
+        <input type="password" asp-for=Input_pass_2 />
+        <input type="submit" />
+        
+    </form>
+
+</div>

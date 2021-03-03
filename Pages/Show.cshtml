@@ -1,0 +1,130 @@
+﻿@page
+@model TestRazor.Pages.ShowModel
+@{
+}
+
+
+<head>
+ <link href="//twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<body>
+
+<div>
+    @if( TempData["Name"]!=null)
+    {
+         <p>@TempData["Name"]</p>
+
+    }
+    @if(User.Identity.IsAuthenticated)
+    {
+        <a href="/Logout"> Log out</a>
+        
+    }
+  
+</div>
+<div>
+@if(Model.h!=null)
+{
+@foreach(var i in Model.h)
+{
+  <text>
+      @i &emsp;
+  </text>
+}
+}
+
+
+</div>
+<div class ="table">
+<div align="center">
+    @if(Model.Items!=null)
+    {
+         <table class="table table-striped">
+              <thead>
+    <tr>
+    
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Desription</th>
+       <th scope="col">Begin price</th>
+      <th scope="col">Redemption price</th>
+    </tr>
+  </thead>
+        
+        @foreach(var i in Model.Items)
+        {
+          
+               <tr>
+                   
+                   <td> @i.Id</td>
+                   <td>@i.Name</td>
+                   <td>@i.Describe</td>
+                       <td>@i.BeginPrice</td>
+                       <td>@i.RedemtionPrice</td>
+                       <td>
+                           <a href="Bet">
+                           <form method="post">
+                               <input type="hidden" value="@i.Id" />
+                           </form>
+                           Do bet</a>
+                       </td>
+                       <td>
+                           <a href="Redemtion">Redemption</a>
+                       </td>
+                
+               </tr>
+
+           
+                
+        }
+           </table>
+    }
+    </div>
+
+</div>
+
+
+<div class ="table">
+<div align="center">
+    @if(Model._Users!=null)
+    {
+         <table class="table table-striped">
+              <thead>
+    <tr>
+    
+      <th scope="col">Id</th>
+      <th scope="col">First name</th>
+      <th scope="col">Second name</th>
+      <th scope="col">Email address</th>
+
+    </tr>
+  </thead>
+        
+        @foreach(var i in Model._Users)
+        {
+          
+               <tr>
+                   
+                   <td> @i.Id</td>
+                   <td>@i.FirstName</td>
+                   <td>@i.SecondName</td>
+                   <td>@i.EmailAddress</td>
+                   
+
+                
+               </tr>
+
+           
+                
+        }
+           </table>
+    }
+    </div>
+
+</div>
+</body>
+
