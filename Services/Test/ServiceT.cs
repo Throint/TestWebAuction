@@ -15,6 +15,7 @@ namespace TestRazor.Services
 {
     public class ServiceT:IHostedService, IDisposable
     {
+       
         private readonly TestS testS;
 
         private readonly ILogger _log;
@@ -79,10 +80,10 @@ namespace TestRazor.Services
                       await  dbcontext.Items.ForEachAsync((async i => {await Task.Run(async() => {
                           if (DateTime.Now.CompareTo(i.DateTimeEnd) >= 0)
                           {
-                              i.Status = "Checked";
+                              i.Status = "Expired";
                               if(i.BetWasDone)
                               {
-                                  var u = await dbcontext.Users.FirstOrDefaultAsync(q => q.Id == i.LastBetUserId);
+                                //  var u = await dbcontext.Users.FirstOrDefaultAsync(q => q.Id == i.LastBetUserId);
                                   
                                  //sonSerializer.Serialize()
                               }

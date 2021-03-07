@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{id}"
 @model TestRazor.Pages.BetModel
 @{
 }
@@ -8,7 +8,18 @@
     @TempData["Error"].ToString();
     }
 <form method="post">
-<input type="number"  asp-for=BetValue step=".01" />
+<label asp-for=Item.Name></label>
+<label asp-for=Item.BeginPrice></label>
+<label> Enter your countкy, city and address</label>
+<input type="text" asp-for=CurOrder.BuyerCountry />
+<input type="text" asp-for=CurOrder.BuyerCity />
+<input type="text" asp-for=CurOrder.Address />
+<label>Enter email</label>
+<input type="email" asp-for="CurOrder.BuyerEmail" />
+
+<label>Phone number</label>
+<input type="tel" asp-for="CurOrder.BuyerTel" />
+<input type="number"  asp-for=BetValue step=".01" min="@Model.Item.BeginPrice" max="@Model.Item.RedemtionPrice" />
 <input type="submit" value="Ok" />
 
 </form>

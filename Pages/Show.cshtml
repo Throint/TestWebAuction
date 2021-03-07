@@ -66,14 +66,14 @@
                        <td>@i.BeginPrice</td>
                        <td>@i.RedemtionPrice</td>
                        <td>
-                           <a href="Bet">
+                           <a href="Bet/@i.Id">
                            <form method="post">
                                <input type="hidden" value="@i.Id" />
                            </form>
                            Do bet</a>
                        </td>
                        <td>
-                           <a href="Redemtion">Redemption</a>
+                           <a href="Pay/@i.Id">Redemption</a>
                        </td>
                 
                </tr>

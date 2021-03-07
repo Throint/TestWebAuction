@@ -1,6 +1,20 @@
-﻿@page
+﻿@page "{id}"
 @model TestRazor.Pages.PayModel
 @{
 }
+<form method="post">
+<label asp-for=Name></label>
+<label asp-for=Value></label>
+<label> Enter your countкy, city and address</label>
+<input type="text" asp-for=Order.BuyerCountry />
+<input type="text" asp-for=Order.BuyerCity />
+<input type="text" asp-for=Order.Address />
+<label>Enter email</label>
+<input type="email" asp-for="Order.BuyerEmail" />
 
+<label>Phone number</label>
+<input type="tel" asp-for=Order.BuyerTel />
+<input type="submit" value="Ok" />
 
+</form>
+</div>
