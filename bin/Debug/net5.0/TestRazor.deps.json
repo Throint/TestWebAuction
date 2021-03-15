@@ -29,6 +29,7 @@
           "Microsoft.EntityFrameworkCore.Design": "5.0.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.3",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.3",
+          "MimeKit": "2.11.0",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "5.0.0.0",
@@ -328,7 +329,7 @@
       },
       "MailKit/2.10.1": {
         "dependencies": {
-          "MimeKit": "2.10.1"
+          "MimeKit": "2.11.0"
         },
         "runtime": {
           "lib/netstandard2.0/MailKit.dll": {
@@ -658,22 +659,22 @@
           "Microsoft.NETCore.Platforms": "3.1.0"
         }
       },
-      "MimeKit/2.10.1": {
+      "MimeKit/2.11.0": {
         "dependencies": {
-          "Portable.BouncyCastle": "1.8.8",
+          "Portable.BouncyCastle": "1.8.10",
           "System.Buffers": "4.5.1",
           "System.Reflection.TypeExtensions": "4.4.0",
           "System.Security.Cryptography.Pkcs": "4.7.0",
           "System.Text.Encoding.CodePages": "4.7.0"
         },
         "runtime": {
-          "lib/netstandard2.1/MimeKit.dll": {
-            "assemblyVersion": "2.10.0.0",
-            "fileVersion": "2.10.1.0"
+          "lib/net50/MimeKit.dll": {
+            "assemblyVersion": "2.11.0.0",
+            "fileVersion": "2.11.0.0"
           }
         },
         "compile": {
-          "lib/netstandard2.1/MimeKit.dll": {}
+          "lib/net50/MimeKit.dll": {}
         }
       },
       "Newtonsoft.Json/10.0.1": {
@@ -715,11 +716,11 @@
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
         }
       },
-      "Portable.BouncyCastle/1.8.8": {
+      "Portable.BouncyCastle/1.8.10": {
         "runtime": {
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {
-            "assemblyVersion": "1.8.8.0",
-            "fileVersion": "1.8.8.2"
+            "assemblyVersion": "1.8.10.0",
+            "fileVersion": "1.8.10.1"
           }
         },
         "compile": {
@@ -3272,12 +3273,12 @@
       "path": "microsoft.win32.systemevents/4.7.0",
       "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
     },
-    "MimeKit/2.10.1": {
+    "MimeKit/2.11.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-rBpIsOdgpMvcNraBDgQSSNCk/MVxxFv7VX2Qq1WnFJ4AnvjIU+r12gaKs6r+SRvCEZWvC5CQlKHuoQbIbO/brA==",
-      "path": "mimekit/2.10.1",
-      "hashPath": "mimekit.2.10.1.nupkg.sha512"
+      "sha512": "sha512-xZGy3hLMxbw0ks82N/NjVYsW7Qb4pMEPtoJ+kcoJw566KVF2RJh2+kl0rdmzitghgf7FpxPGJmCNgIh+iciBmg==",
+      "path": "mimekit/2.11.0",
+      "hashPath": "mimekit.2.11.0.nupkg.sha512"
     },
     "Newtonsoft.Json/10.0.1": {
       "type": "package",
@@ -3286,12 +3287,12 @@
       "path": "newtonsoft.json/10.0.1",
       "hashPath": "newtonsoft.json.10.0.1.nupkg.sha512"
     },
-    "Portable.BouncyCastle/1.8.8": {
+    "Portable.BouncyCastle/1.8.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-1rxdf8NfyAxLlqIEciCl/yNhmz1YiLkmp6rrF8p3/NVmyHHzPWLx8djtDvSAwhPLg64BXvsRcM3+5bP1HAUdYg==",
-      "path": "portable.bouncycastle/1.8.8",
-      "hashPath": "portable.bouncycastle.1.8.8.nupkg.sha512"
+      "sha512": "sha512-XLhjNAwuVB9ynwn11l5K44eyozh8q6gFseTrlnLNttejimglX7+F9+vxh60LPjvA/DAt6fUdS43N3ah8K6eaWg==",
+      "path": "portable.bouncycastle/1.8.10",
+      "hashPath": "portable.bouncycastle.1.8.10.nupkg.sha512"
     },
     "runtime.native.System/4.3.0": {
       "type": "package",

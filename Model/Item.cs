@@ -24,6 +24,7 @@ namespace TestRazor.Model
         public DateTime DateTimeBegin { get; set; }
 
         public bool BetWasDone { get; set; }
+        public bool ItemWasRedempt { get; set; }
         public long LastBetUserId { get; set; }
         public string Status { get; set; }
         

@@ -75,10 +75,10 @@ C:\Users\user\source\repos\TestRazor\TestRazor\bin\Debug\net5.0\libman.json
 C:\Users\user\source\repos\TestRazor\TestRazor\obj\Debug\net5.0\Razor\Pages\CreateUser.cshtml.g.cs
 C:\Users\user\source\repos\TestRazor\TestRazor\obj\Debug\net5.0\Razor\Pages\Login.cshtml.g.cs
 C:\Users\user\source\repos\TestRazor\TestRazor\obj\Debug\net5.0\Razor\Pages\Logout.cshtml.g.cs
-C:\Users\user\source\repos\TestRazor\TestRazor\obj\Debug\net5.0\Razor\Pages\Index2.cshtml.g.cs
 C:\Users\user\source\repos\TestRazor\TestRazor\obj\Debug\net5.0\Razor\Pages\Bet.cshtml.g.cs
 C:\Users\user\source\repos\TestRazor\TestRazor\bin\Debug\net5.0\MailKit.dll
 C:\Users\user\source\repos\TestRazor\TestRazor\bin\Debug\net5.0\MimeKit.dll
 C:\Users\user\source\repos\TestRazor\TestRazor\bin\Debug\net5.0\BouncyCastle.Crypto.dll
 C:\Users\user\source\repos\TestRazor\TestRazor\obj\Debug\net5.0\Razor\Pages\Pay.cshtml.g.cs
 C:\Users\user\source\repos\TestRazor\TestRazor\obj\Debug\net5.0\Razor\Pages\TestPay.cshtml.g.cs
+C:\Users\user\source\repos\TestRazor\TestRazor\obj\Debug\net5.0\Razor\Pages\CreateItem.cshtml.g.cs

@@ -19,14 +19,14 @@ namespace TestRazor.Pages
 {
    
     [Authorize]
-    public class Index2Model : PageModel
+    public class CreateItemModel : PageModel
     {
-        private readonly ILogger<Index2Model> _logger;
+        private readonly ILogger<CreateItemModel> _logger;
         private readonly AppData appData;
       //  private readonly IHostedService _recureHostedService;
         //     public Services.CheckTime CheckTime;
         private readonly TestRazor.Services.TestS testS;
-        public Index2Model(ILogger<Index2Model> logger, AppData data, TestS testS)
+        public CreateItemModel(ILogger<CreateItemModel> logger, AppData data, TestS testS)
         {
            // CheckTime = checkTime;
             _logger = logger;

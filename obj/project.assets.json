@@ -441,20 +441,20 @@
           }
         }
       },
-      "MimeKit/2.10.1": {
+      "MimeKit/2.11.0": {
         "type": "package",
         "dependencies": {
-          "Portable.BouncyCastle": "1.8.8",
+          "Portable.BouncyCastle": "1.8.10",
           "System.Buffers": "4.5.1",
           "System.Reflection.TypeExtensions": "4.4.0",
           "System.Security.Cryptography.Pkcs": "4.7.0",
           "System.Text.Encoding.CodePages": "4.4.0"
         },
         "compile": {
-          "lib/netstandard2.1/MimeKit.dll": {}
+          "lib/net50/MimeKit.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.1/MimeKit.dll": {}
+          "lib/net50/MimeKit.dll": {}
         }
       },
       "Newtonsoft.Json/10.0.1": {
@@ -494,7 +494,7 @@
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
         }
       },
-      "Portable.BouncyCastle/1.8.8": {
+      "Portable.BouncyCastle/1.8.10": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
@@ -2328,10 +2328,10 @@
         "version.txt"
       ]
     },
-    "MimeKit/2.10.1": {
-      "sha512": "rBpIsOdgpMvcNraBDgQSSNCk/MVxxFv7VX2Qq1WnFJ4AnvjIU+r12gaKs6r+SRvCEZWvC5CQlKHuoQbIbO/brA==",
+    "MimeKit/2.11.0": {
+      "sha512": "xZGy3hLMxbw0ks82N/NjVYsW7Qb4pMEPtoJ+kcoJw566KVF2RJh2+kl0rdmzitghgf7FpxPGJmCNgIh+iciBmg==",
       "type": "package",
-      "path": "mimekit/2.10.1",
+      "path": "mimekit/2.11.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2348,13 +2348,16 @@
         "lib/net48/MimeKit.dll",
         "lib/net48/MimeKit.pdb",
         "lib/net48/MimeKit.xml",
+        "lib/net50/MimeKit.dll",
+        "lib/net50/MimeKit.pdb",
+        "lib/net50/MimeKit.xml",
         "lib/netstandard2.0/MimeKit.dll",
         "lib/netstandard2.0/MimeKit.pdb",
         "lib/netstandard2.0/MimeKit.xml",
         "lib/netstandard2.1/MimeKit.dll",
         "lib/netstandard2.1/MimeKit.pdb",
         "lib/netstandard2.1/MimeKit.xml",
-        "mimekit.2.10.1.nupkg.sha512",
+        "mimekit.2.11.0.nupkg.sha512",
         "mimekit.nuspec"
       ]
     },
@@ -2385,10 +2388,10 @@
         "tools/install.ps1"
       ]
     },
-    "Portable.BouncyCastle/1.8.8": {
-      "sha512": "1rxdf8NfyAxLlqIEciCl/yNhmz1YiLkmp6rrF8p3/NVmyHHzPWLx8djtDvSAwhPLg64BXvsRcM3+5bP1HAUdYg==",
+    "Portable.BouncyCastle/1.8.10": {
+      "sha512": "XLhjNAwuVB9ynwn11l5K44eyozh8q6gFseTrlnLNttejimglX7+F9+vxh60LPjvA/DAt6fUdS43N3ah8K6eaWg==",
       "type": "package",
-      "path": "portable.bouncycastle/1.8.8",
+      "path": "portable.bouncycastle/1.8.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2396,7 +2399,7 @@
         "lib/net40/BouncyCastle.Crypto.xml",
         "lib/netstandard2.0/BouncyCastle.Crypto.dll",
         "lib/netstandard2.0/BouncyCastle.Crypto.xml",
-        "portable.bouncycastle.1.8.8.nupkg.sha512",
+        "portable.bouncycastle.1.8.10.nupkg.sha512",
         "portable.bouncycastle.nuspec"
       ]
     },
@@ -6033,7 +6036,8 @@
       "MailKit >= 2.10.1",
       "Microsoft.entityframeworkcore.design >= 5.0.3",
       "Microsoft.entityframeworkcore.sqlserver >= 5.0.3",
-      "Microsoft.entityframeworkcore.tools >= 5.0.3"
+      "Microsoft.entityframeworkcore.tools >= 5.0.3",
+      "MimeKit >= 2.11.0"
     ]
   },
   "packageFolders": {
@@ -6099,6 +6103,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[5.0.3, )"
+          },
+          "MimeKit": {
+            "target": "Package",
+            "version": "[2.11.0, )"
           }
         },
         "imports": [

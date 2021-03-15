@@ -8,7 +8,8 @@ namespace TestRazor.Model
     public class Order
     {
         public long Id { get; set; }
-     //   public long BuyerId { get; set; }
+     //   public long BuyerId { get; set; } if user unauthenticated not actual
+
         public long SellerId { get; set; }
         public string BuyerEmail { get; set; }
         public string SellerEmail { get; set; }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "eIOLkWvKF4eyvdrh++c7xi4kseqYZ4uWl8WynHQ3mMSIqvhkfe8jTam1VUeic7Q8A9XB+f6UGzIzeHXXxFmm0Q==",
+  "dgSpecHash": "SJYiejwnqv8/Z/ms829Lza0eaEddSuy+QNEGE3GvoMKGXO/DqYtaosbrc07moZWmWfzwAKUfe1itnwDYswhNnw==",
   "success": true,
   "projectFilePath": "C:\\Users\\user\\source\\repos\\TestRazor\\TestRazor\\TestRazor.csproj",
   "expectedPackageFiles": [
@@ -35,9 +35,9 @@
     "C:\\Users\\user\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\mimekit\\2.10.1\\mimekit.2.10.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\mimekit\\2.11.0\\mimekit.2.11.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\newtonsoft.json\\10.0.1\\newtonsoft.json.10.0.1.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\portable.bouncycastle\\1.8.8\\portable.bouncycastle.1.8.8.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\portable.bouncycastle\\1.8.10\\portable.bouncycastle.1.8.10.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
