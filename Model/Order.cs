@@ -18,7 +18,7 @@ namespace TestRazor.Model
         public string BuyerCountry { get; set; }
         public string BuyerCity { get; set; }
         public string Address { get; set; }
-
+        public string PayType { get; set; }
         public string Status { get; set; }
     }
 }

@@ -81,3 +81,4 @@ C:\Users\user\source\repos\TestRazor\TestRazor\bin\Debug\net5.0\MailKit.dll
 C:\Users\user\source\repos\TestRazor\TestRazor\bin\Debug\net5.0\MimeKit.dll
 C:\Users\user\source\repos\TestRazor\TestRazor\bin\Debug\net5.0\BouncyCastle.Crypto.dll
 C:\Users\user\source\repos\TestRazor\TestRazor\obj\Debug\net5.0\Razor\Pages\Pay.cshtml.g.cs
+C:\Users\user\source\repos\TestRazor\TestRazor\obj\Debug\net5.0\Razor\Pages\TestPay.cshtml.g.cs
