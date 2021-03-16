@@ -48,11 +48,11 @@ namespace TestRazor.Pages
                 Item.BeginPrice = BetValue;
                 Item.BetWasDone = true;
                 appData.Items.Update(Item);
-                if(CurOrder!=null)
-                {
-                  await  appData.Orders.AddAsync(CurOrder);
-                }
-                await appData.SaveChangesAsync();
+                //if(CurOrder!=null && Item.)
+                //{
+                //  await  appData.Orders.AddAsync(CurOrder);
+                //}
+                //await appData.SaveChangesAsync();
                 //freeze money on card until lot end 
                 //or  input only winner's card 
 
@@ -63,7 +63,7 @@ namespace TestRazor.Pages
                     long.TryParse(i, out sid);
                     var q = await appData.Users.FirstOrDefaultAsync(i => i.Id == sid);
 
-                    q.OrdersBetId.Concat(q.Id.ToString());
+                    q.OrdersBetId.Concat(Request.Query["id"].ToString());
                     appData.Users.Update(q);
                     await appData.SaveChangesAsync();
                 }

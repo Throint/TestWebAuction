@@ -64,10 +64,10 @@ namespace TestRazor.Pages
             if (this.Name != null && this.Desription!=null)
             {
 
-                DateTime dateTime = DateTime.ParseExact(this.Time,"ss", CultureInfo.InvariantCulture);
+                DateTime dateTime = DateTime.ParseExact(this.Time,"HH", CultureInfo.InvariantCulture);
                 DateTime dateTime1 = DateTime.Now;
 
-                TimeSpan timeSpan = new TimeSpan(0, 0, 0, dateTime.Second, 0);
+                TimeSpan timeSpan = new TimeSpan(0, dateTime.Hour, 0, 0, 0);
               DateTime dateTimeResult=  dateTime1.AddSeconds(timeSpan.TotalSeconds);
                 Item item = new Item()
                 {
