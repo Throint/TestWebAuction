@@ -12,5 +12,6 @@
         public string ItemsList { get; set; }
         public string HashPass { get; set; }
         public string Salt { get; set; }
+        public bool EmailWasConfirmed { get; set; }
     }
 }

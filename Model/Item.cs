@@ -27,18 +27,29 @@ namespace TestRazor.Model
         public bool ItemWasRedempt { get; set; }
         public long LastBetUserId { get; set; }
         public string Status { get; set; }
-        
-       
-    }
-    public class AppData:DbContext
-    {
-        public DbSet<Item> Items { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public AppData(DbContextOptions<AppData> dbContextOptions) : base(dbContextOptions)
-        {
-           // Database.EnsureCreated();
 
+        public class ConfirmToken
+        {
+            public long Id { get; set; }
+            public long PersonId { get; set; }
+            public string Email { get; set; }
+
+            public string Token { get; set; }
+            public DateTime CreationDateTime { get; set; }
+
+            public int LifeTimeMin { get; set; }
+        }
+        public class AppData : DbContext
+        {
+            public DbSet<Item> Items { get; set; }
+            public DbSet<User> Users { get; set; }
+            public DbSet<Order> Orders { get; set; }
+            public DbSet<ConfirmToken> ConfirmTokens { get; set; }
+            public AppData(DbContextOptions<AppData> dbContextOptions) : base(dbContextOptions)
+            {
+                // Database.EnsureCreated();
+
+            }
         }
     }
 }

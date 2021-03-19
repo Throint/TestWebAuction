@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using TestRazor.Model;
 using TestRazor.Services;
+using static TestRazor.Model.Item;
 
 namespace TestRazor.Pages
 {

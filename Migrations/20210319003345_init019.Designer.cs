@@ -6,13 +6,12 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TestRazor.Model;
-using static TestRazor.Model.Item;
 
 namespace TestRazor.Migrations
 {
-    [DbContext(typeof(AppData))]
-    [Migration("20210315141940_init018")]
-    partial class init018
+    [DbContext(typeof(Item.AppData))]
+    [Migration("20210319003345_init019")]
+    partial class init019
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -73,6 +72,33 @@ namespace TestRazor.Migrations
                     b.ToTable("Items");
                 });
 
+            modelBuilder.Entity("TestRazor.Model.Item+ConfirmToken", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreationDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("LifeTimeMin")
+                        .HasColumnType("int");
+
+                    b.Property<long>("PersonId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ConfirmTokens");
+                });
+
             modelBuilder.Entity("TestRazor.Model.Order", b =>
                 {
                     b.Property<long>("Id")
@@ -94,6 +120,9 @@ namespace TestRazor.Migrations
 
                     b.Property<string>("BuyerTel")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("ItemId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("PayType")
                         .HasColumnType("nvarchar(max)");
@@ -124,6 +153,9 @@ namespace TestRazor.Migrations
 
                     b.Property<string>("EmailAddress")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EmailWasConfirmed")
+                        .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");

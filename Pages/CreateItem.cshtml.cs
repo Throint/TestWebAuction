@@ -14,6 +14,7 @@ using TestRazor.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading;
 using Microsoft.Extensions.Hosting;
+using static TestRazor.Model.Item;
 
 namespace TestRazor.Pages
 {
@@ -68,7 +69,7 @@ namespace TestRazor.Pages
                 DateTime dateTime1 = DateTime.Now;
 
                 TimeSpan timeSpan = new TimeSpan(0, dateTime.Hour, 0, 0, 0);
-              DateTime dateTimeResult=  dateTime1.AddSeconds(timeSpan.TotalSeconds);
+              DateTime dateTimeResult=  dateTime1.AddHours(timeSpan.TotalHours);
                 Item item = new Item()
                 {
                     Name = Name,

@@ -16,9 +16,11 @@ using MailKit.Net.Smtp;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using static TestRazor.Model.Item;
 
 namespace TestRazor.Services
 {
+    
     public class ServiceT:IHostedService, IDisposable
     {
        

@@ -8,15 +8,23 @@ using TestRazor.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 using System.Text;
+using TestRazor.Services;
+using static TestRazor.Model.Item;
+using System.Security.Claims;
+using Microsoft.Extensions.Logging;
 
 namespace TestRazor.Pages
 {
     public class CreateUserModel : PageModel
     {
         private readonly AppData data;
-        public CreateUserModel(AppData _data)
+        private Logger<CreateUserModel> _logger;
+        EmailSendService EmailSendService;
+        public CreateUserModel(AppData _data, EmailSendService emailSendService, Logger<CreateUserModel> logger)
         {
             data = _data;
+            EmailSendService = emailSendService;
+            this._logger = logger;
         }
         [BindProperty]
         public string FName { get; set; }
@@ -29,8 +37,9 @@ namespace TestRazor.Pages
         [BindProperty]
         public string SName { get; set; }
         
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGetAsync()
         {
+            await ConfirmEmail();
             return Page();   
         }
         public async Task<IActionResult> OnPostAsync()
@@ -79,6 +88,7 @@ namespace TestRazor.Pages
 
                     if (data.Users.Where(i => i == user).Count() == 0)
                     {
+                        await ConfirmEmailCreate(user);
                         await data.Users.AddAsync(user);
                         await data.SaveChangesAsync();
                     }
@@ -100,5 +110,84 @@ namespace TestRazor.Pages
 
 
         }
+
+     
+        public async Task<IActionResult> ConfirmEmail()
+        {
+            if (Request.Query.ContainsKey("token"))
+            {
+                string value = Request.Query["token"];
+                //      string value_check = value.Replace(' ', '+');
+                var ql = data.ConfirmTokens.ToList();
+                for (int i = 0; i < ql.Count; i++)
+                {
+                    if (ql[i].Token == value)
+                    {
+                        TimeSpan timeSpan = new TimeSpan(0, ql[i].LifeTimeMin, 0);
+                        var qw = ql[i].CreationDateTime + timeSpan;
+                        if (DateTime.Compare(DateTime.Now, qw) <= 0)
+                        {
+                            var tmp = await data.Users.FirstOrDefaultAsync(u => u.Id == ql[i].PersonId);
+                            tmp.EmailWasConfirmed = true;
+                            data.Users.Update(tmp);
+                            await data.SaveChangesAsync();
+                        }
+                        return RedirectToAction("Index", "Home");
+
+                    }
+                }
+
+            }
+            return RedirectToAction("Index", "Home");
+        }
+        public async Task<IActionResult> ConfirmEmailCreate(User _person)
+        {
+            string str = User.FindFirst(ClaimTypes.Email)?.Value;
+            if (str != null)
+            {
+                var q = await data.Users.FirstOrDefaultAsync(i => i.EmailAddress == str);
+
+
+            }
+
+            //more fast
+            StringBuilder path = new StringBuilder(Request.Scheme);
+            path.Append("://");
+            path.Append(Request.Host.Value);
+            path.Append("/User/ConfirmEmail");
+            path.Append("/?token=");
+
+            //  string s =Request.Scheme+"://"+ Request.Host.Value;
+            ////  var allowedString = String.Concat(s.Select(i => i)) ;
+
+            //  var tmp_res = s + "/User/ConfirmEmail";
+            //  var ttt = tmp_res + "/?token=";
+            var token = await EmailSendService.Token(_person);
+            StringBuilder stringBuilder = new StringBuilder(token);
+            stringBuilder.Replace("+", "%2B");
+            path.Append(stringBuilder.ToString());
+
+
+
+            await data.ConfirmTokens.AddAsync(new ConfirmToken()
+            {
+                CreationDateTime = DateTime.Now,
+                Email = _person.EmailAddress,
+
+                LifeTimeMin = 10,
+                Token = token,
+                PersonId = _person.Id
+
+            });
+            await data.SaveChangesAsync();
+
+            var log_tmp = await EmailSendService.SendEmailAsync(_person.EmailAddress, "Confirm", path.ToString());
+            _logger.LogInformation(log_tmp);
+
+            return RedirectToAction("Login");
+        }
     }
 }
+
+    
+
