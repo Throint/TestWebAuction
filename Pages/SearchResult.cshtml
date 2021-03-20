@@ -1,0 +1,65 @@
+﻿@page
+@model TestRazor.Pages.SearchResultModel
+@{
+}
+
+
+<div class ="table">
+<div align="center">
+    @if(Model!=null)
+    {
+         <table class="table table-striped">
+              <thead>
+    <tr>
+    
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+       <th scope="col">Vote</th>
+        <th scope="col">Result</th>
+  
+    </tr>
+  </thead>
+        
+        @foreach(var i in Model.Items)
+        {
+          
+               <tr>
+                   
+                   <td> @i.Id</td>
+                   <td>@i.Name</td>
+                 
+                      @if(@i.Status=="Archived")
+                      {
+                         <td>
+                         
+                        Archived
+                          
+                       </td>   
+                      }
+                      else
+                      {
+                       <td>
+                           <a href="/Bet/{@i.Id}">
+                        
+                           Vote!</a>
+                       </td>
+                            }
+
+                            <td>
+                               <a href="/Pay/{@i.Id}">
+                                 Result
+                                </a>
+                            </td>
+                    
+                
+               </tr>
+
+           
+                
+        }
+           </table>
+    }
+    </div>
+
+</div>
+

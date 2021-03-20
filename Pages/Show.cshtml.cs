@@ -24,6 +24,9 @@ namespace TestRazor.Pages
      public   List<Item> Items { get; set; }
         [BindProperty]
         public List<User> _Users { get; set; }
+
+        [BindProperty]
+        public string ToFound { get; set; }
         [BindProperty]
         public List<string>h { get; set; }
         public void OnGet()
@@ -56,6 +59,20 @@ namespace TestRazor.Pages
             h.Add(HttpContext.User.FindFirst(ClaimTypes.Sid)?.Value);
             h.Add(HttpContext.User.FindFirst(ClaimTypes.Email)?.Value);
            
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if(ToFound!=null)
+            {
+              
+                var seek = appData.Items.Where(i => i.Name.Contains(ToFound)).Select(i => i).ToList();
+
+                ViewData["Found"] = seek;
+                
+            
+            }
+            return RedirectToPage("SearchResult");
         }
     }
 }

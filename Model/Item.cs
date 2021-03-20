@@ -50,6 +50,11 @@ namespace TestRazor.Model
                 // Database.EnsureCreated();
 
             }
+
+            internal Task FirstOrDefaultAsync()
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

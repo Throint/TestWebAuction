@@ -56,7 +56,7 @@ namespace TestRazor.Services
             //List<Timer> timers = new List<Timer>();
             //AppData appData;
             //appData.Items.AsParallel().ForAll((i) => { timers.Add(i)})
-           _timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromMinutes(1));
+           _timer = new Timer(DoWork, null, TimeSpan.Zero.Minutes, TimeSpan.FromMinutes(1).Minutes);
             return Task.CompletedTask;
         }
 
@@ -84,26 +84,30 @@ namespace TestRazor.Services
                 //    Name = "Test"
                 //};
                 //dbcontext.Items.Add(item);
-             
-                      await  dbcontext.Items.ForEachAsync((async i => {await Task.Run(async() => {
-                          if (DateTime.Now.CompareTo(i.DateTimeEnd) >= 0)
-                          {
-                              i.Status = "Expired";
-                              if(i.BetWasDone && !i.ItemWasRedempt)
-                              {
-                                  var buyer = await dbcontext.Users.FirstOrDefaultAsync(q => q.Id == i.LastBetUserId); 
-                                  var seller = await dbcontext.Users.FirstOrDefaultAsync
-                                  (q =>
-                                      JSONConvert<List<long>>.
-                                     GetIdListFromJSONString(q.ItemsList).Contains(i.Id)
 
-                                 );
-                                 if(seller!=null)
-                                  {
-                                    await  EmailSendService.SendEmailAsync(seller.EmailAddress, "WebAuction", $"Your item {i.Id} was ordered by {i.LastBetUserId}. Contact with " +
-                                        $"him to detail order, email {buyer.EmailAddress}" +
-                                        $"phone number {buyer.PhoneNumber}");
-                                  }
+
+
+
+             
+                      //await  dbcontext?.Items.ForEachAsync((async i => {await Task.Run(async() => {
+                      //    if (DateTime.Now.CompareTo(i.DateTimeEnd) >= 0)
+                      //    {
+                      //        i.Status = "Expired";
+                      //        if(i.BetWasDone && !i.ItemWasRedempt)
+                      //        {
+                      //            var buyer = await dbcontext.Users.FirstOrDefaultAsync(q => q.Id == i.LastBetUserId); 
+                      //            var seller = await dbcontext.Users.FirstOrDefaultAsync
+                      //            (q =>
+                      //                JSONConvert<List<long>>.
+                      //               GetIdListFromJSONString(q.ItemsList).Contains(i.Id)
+
+                      //           );
+                      //           if(seller!=null)
+                      //            {
+                      //              await  EmailSendService.SendEmailAsync(seller.EmailAddress, "WebAuction", $"Your item {i.Id} was ordered by {i.LastBetUserId}. Contact with " +
+                      //                  $"him to detail order, email {buyer.EmailAddress}" +
+                      //                  $"phone number {buyer.PhoneNumber}");
+                      //            }
 
 
                                   //var q=await dbcontext.Users.FirstOrDefaultAsync(i=>i.)
