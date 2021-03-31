@@ -54,13 +54,20 @@ namespace TestRazor.Pages
                     {
                         var EmailValue = User.FindFirst(ClaimTypes.Email)?.Value;
                         var user_buyer = await appData.Users.FirstOrDefaultAsync(i => i.EmailAddress == EmailValue);
-                        
+                        await EmailSendService.SendEmailAsync(Order.SellerEmail, $"Item number {Request.Query["id"]}", $"Buyer {user_buyer.EmailAddress} {user_buyer.PhoneNumber}");
+                        await EmailSendService.SendEmailAsync(user_buyer.EmailAddress, $"Web auction", $"You buy item number {Request.Query["id"]}  seller email: {Order.SellerEmail}  seller phone number{Order.SellerTel}");
+                        var Item = await appData.Items.FirstOrDefaultAsync(i => i.Id == Order.ItemId);
+                        Item.ItemWasRedempt = true;
+                        Item.Status = "Ordered";
+
                     }
                 }
                 else
                 {
                    await EmailSendService.SendEmailAsync(Order.SellerEmail, $"Item number {Request.Query["id"]}", $"Buyer {Order.BuyerEmail} {Order.BuyerTel}");
-                   var Item= await appData.Items.FirstOrDefaultAsync(i => i.Id == Order.ItemId);
+                    await EmailSendService.SendEmailAsync(Order.BuyerEmail, $"Web auction", $"You buy item number {Request.Query["id"]}  seller email: {Order.SellerEmail}  seller phone number{Order.SellerTel}");
+
+                    var Item = await appData.Items.FirstOrDefaultAsync(i => i.Id == Order.ItemId);
                     Item.ItemWasRedempt = true;
                     Item.Status = "Ordered";
                 }

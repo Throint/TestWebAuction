@@ -20,17 +20,17 @@ using static TestRazor.Model.Item;
 
 namespace TestRazor.Services
 {
-    
-    public class ServiceT:IHostedService, IDisposable
+
+    public class ServiceT : IHostedService, IDisposable
     {
-       
+
         private readonly TestS testS;
 
         private readonly ILogger _log;
         private Timer _timer;
         private readonly IServiceScopeFactory serviceScopeFactory;
-    //    private readonly AppData appData;
-      
+        //    private readonly AppData appData;
+
         public ServiceT(TestS testS, IServiceScopeFactory serviceScopeFactory, ILogger<RecureHostedService> log)
         {
             this.testS = testS;
@@ -56,7 +56,7 @@ namespace TestRazor.Services
             //List<Timer> timers = new List<Timer>();
             //AppData appData;
             //appData.Items.AsParallel().ForAll((i) => { timers.Add(i)})
-           _timer = new Timer(DoWork, null, TimeSpan.Zero.Minutes, TimeSpan.FromMinutes(1).Minutes);
+            _timer = new Timer(DoWork, null, TimeSpan.Zero.Minutes, TimeSpan.FromMinutes(1).Minutes);
             return Task.CompletedTask;
         }
 
@@ -71,66 +71,86 @@ namespace TestRazor.Services
             using (var scope = serviceScopeFactory.CreateScope())
             {
                 var dbcontext = scope.ServiceProvider.GetRequiredService<AppData>();
-                //for (int i = 0; i < testS.Id.Count; i++)
-                //{
+                for (int i = 0; i < testS.Id.Count; i++)
+                {
 
-                //    var t = await dbcontext.Items.FirstOrDefaultAsync(o => o.Id == testS.Id[i]);
-                //    if (t?.DateTimeEnd.CompareTo(DateTime.Now)>0)
-                //    {
-                //Item item = new Item()
-                //{
-                //    UserCreatedId = 999,
-                //    BeginPrice = 29,
-                //    Name = "Test"
-                //};
-                //dbcontext.Items.Add(item);
-
-
+                    var t = await dbcontext.Items.FirstOrDefaultAsync(o => o.Id == testS.Id[i]);
+                    //if (t?.DateTimeEnd.CompareTo(DateTime.Now) > 0)
+                    //{
+                    //    Item item = new Item()
+                    //    {
+                    //        UserCreatedId = 999,
+                    //        BeginPrice = 29,
+                    //        Name = "Test"
+                    //    };
+                    //    dbcontext.Items.Add(item);
 
 
-             
-                      //await  dbcontext?.Items.ForEachAsync((async i => {await Task.Run(async() => {
-                      //    if (DateTime.Now.CompareTo(i.DateTimeEnd) >= 0)
-                      //    {
-                      //        i.Status = "Expired";
-                      //        if(i.BetWasDone && !i.ItemWasRedempt)
-                      //        {
-                      //            var buyer = await dbcontext.Users.FirstOrDefaultAsync(q => q.Id == i.LastBetUserId); 
-                      //            var seller = await dbcontext.Users.FirstOrDefaultAsync
-                      //            (q =>
-                      //                JSONConvert<List<long>>.
-                      //               GetIdListFromJSONString(q.ItemsList).Contains(i.Id)
-
-                      //           );
-                      //           if(seller!=null)
-                      //            {
-                      //              await  EmailSendService.SendEmailAsync(seller.EmailAddress, "WebAuction", $"Your item {i.Id} was ordered by {i.LastBetUserId}. Contact with " +
-                      //                  $"him to detail order, email {buyer.EmailAddress}" +
-                      //                  $"phone number {buyer.PhoneNumber}");
-                      //            }
 
 
-                                  //var q=await dbcontext.Users.FirstOrDefaultAsync(i=>i.)
-                                  //EmailSendService.SendEmailAsync()
-                                  
-                                //  var u = await dbcontext.Users.FirstOrDefaultAsync(q => q.Id == i.LastBetUserId);
-                                  
-                                 //sonSerializer.Serialize()
-                              }
-                           //   dbcontext.Items.Update(i);
-                 //         await    dbcontext.SaveChangesAsync();
-                          }
-                      }); }));
-                   //     dbcontext.Items.Remove(t);
-                     //   dbcontext.Items.Update(t);
-                        await dbcontext.SaveChangesAsync();
-                        _log.LogInformation("Deleted");
-                //    }
-                //}
-                _log.LogInformation("Timed Background Service is working.");
+
+                    await dbcontext?.Items.ForEachAsync((async i =>
+                    {
+                        await Task.Run(async () =>
+                        {
+                            if (DateTime.Now.CompareTo(i.DateTimeEnd) >= 0)
+                            {
+                                i.Status = "Expired";
+                                if (i.BetWasDone && !i.ItemWasRedempt)
+                                {
+                                    var buyer = await dbcontext.Users.FirstOrDefaultAsync(q => q.Id == i.LastBetUserId);
+                                    var seller = await dbcontext.Users.FirstOrDefaultAsync
+                                    (q =>
+                                        JSONConvert<List<long>>.
+                                       GetIdListFromJSONString(q.ItemsList).Contains(i.Id)
+
+                                   );
+                                    if (seller != null)
+                                    {
+                                        await EmailSendService.SendEmailAsync(seller.EmailAddress, "WebAuction", $"Your item {i.Id} was ordered by {i.LastBetUserId}. Contact with " +
+                                            $"him to detail order, email {buyer.EmailAddress}" +
+                                            $"phone number {buyer.PhoneNumber}");
+                                    }
+                                    if(buyer!=null)
+                                    {
+                                        await EmailSendService.SendEmailAsync(buyer.EmailAddress, "WebAuction", $"You buy item {i.Id} in seller {seller.Id}. Contact with  {seller.EmailAddress}" +
+                                        
+                                           $"phone number {seller.PhoneNumber}");
+                                    }
+
+
+                                    //var q = await dbcontext.Users.FirstOrDefaultAsync(i => i.EmailWasConfirmed);
+                                    //    //   EmailSendService.SendEmailAsync();
+
+
+                                    //    var u = await dbcontext.Users.FirstOrDefaultAsync(q => q.Id == i.LastBetUserId);
+
+                                    //sonSerializer.Serialize();
+                                }
+                                dbcontext.Items.Update(i);
+                                await dbcontext.SaveChangesAsync();
+                            }
+
+                            //dbcontext.Items.Remove(t);
+                            //dbcontext.Items.Update(t);
+                            await dbcontext.SaveChangesAsync();
+                                //  _log.LogInformation("Deleted");
+                                //    }
+                                //}
+                                // _log.LogInformation("Timed Background Service is working.");
+
+
+                            });
+                    }));
+                }
             }
         }
     }
+
+
+
+
+
 
 
     public class EmailSendService
@@ -217,24 +237,27 @@ namespace TestRazor.Services
         {
             return JsonSerializer.Deserialize<T>(input);
         }
-       
+
         public static string GetJsonString(T obj)
         {
 
 
             return JsonSerializer.Serialize(obj);
         }
-        public static byte[]GetJsonByteArray(T obj)
+        public static byte[] GetJsonByteArray(T obj)
         {
             return JsonSerializer.SerializeToUtf8Bytes(obj);
         }
     }
 
+
+
     public static class Ext
     {
-        public static List<long>GetListId(this string str)
+        public static List<long> GetListId(this string str)
         {
-         return   JsonSerializer.Deserialize<List<long>>(str);
+            return JsonSerializer.Deserialize<List<long>>(str);
         }
     }
 }
+
