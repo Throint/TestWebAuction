@@ -2,3 +2,16 @@
 @model TestRazor.Pages.IndexModel
 @{
 }
+@if(User.Identity.IsAuthenticated)
+{
+  <p>  Authorized  </p>
+}
+<html>
+    <div>
+      <form method="post">
+          <a href="Show">Show lots</a>
+
+      </form>
+  
+    </div>
+</html>

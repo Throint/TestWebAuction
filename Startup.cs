@@ -33,6 +33,7 @@ namespace TestRazor
             services.AddDbContext<AppData>(opt => opt.UseSqlServer(connect));
             services.AddRazorPages();
             services.AddTransient<HashService>();
+            services.AddTransient<EmailSendService>();
             services.AddSingleton<TestS>();
      //       services.AddSingleton<AppData>();
             services.AddHostedService<ServiceT>();

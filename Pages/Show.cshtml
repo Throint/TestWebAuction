@@ -56,7 +56,10 @@
       <th scope="col">Name</th>
       <th scope="col">Desription</th>
        <th scope="col">Begin price</th>
+         <th scope="col">Bet</th>
       <th scope="col">Redemption price</th>
+        <th scope="col">Redempt</th>
+      <th scope="col">Status</th>
     </tr>
   </thead>
         
@@ -68,17 +71,32 @@
                    <td> @i.Id</td>
                    <td>@i.Name</td>
                    <td>@i.Describe</td>
-                       <td>@i.BeginPrice</td>
-                       <td>@i.RedemtionPrice</td>
+                       <td>@i.BeginPrice
+                   
+                   </td>
+                     @*  <td>@i.RedemtionPrice</td>*@
                        <td>
+                           @if(i.Status!="Expired")
+                           {
                            <a href="Bet/@i.Id">
                            <form method="post">
                                <input type="hidden" value="@i.Id" />
                            </form>
                            Do bet</a>
+                           }
+                           
                        </td>
                        <td>
+                          @i.RedemtionPrice
+                          </td>
+                          <td>
+                              @if(i.Status!="Expired")
+                              {
                            <a href="Pay/@i.Id">Redemption</a>
+                           }
+                       </td>
+                       <td>
+                           @i.Status
                        </td>
                 
                </tr>

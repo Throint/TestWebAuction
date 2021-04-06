@@ -5,10 +5,14 @@
 <form method="post">
 <label asp-for=Name></label>
 <label asp-for=Value></label>
-<label> Enter your countкy, city and address</label>
+<label> Enter your country, city and address</label>
 <input type="text" asp-for=Order.BuyerCountry />
+<br />
 <input type="text" asp-for=Order.BuyerCity />
+<br />
 <input type="text" asp-for=Order.Address />
+<br />
+
 <label>Enter email</label>
 <input type="email" asp-for="Order.BuyerEmail" />
 
