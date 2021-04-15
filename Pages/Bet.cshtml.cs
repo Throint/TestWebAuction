@@ -12,9 +12,11 @@ using TestRazor.Model;
 using System.Text.Json;
 using TestRazor.Services;
 using static TestRazor.Model.Item;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TestRazor.Pages
 {
+    [Authorize]
     public class BetModel : PageModel
     {
         private readonly AppData appData;
