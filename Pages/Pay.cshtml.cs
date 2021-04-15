@@ -33,12 +33,12 @@ namespace TestRazor.Pages
         public Order Order { get; set; }
 
         public Item t { get; set; }
-        public async Task OnGetAsync(long id)
+        public async Task<IActionResult> OnGetAsync(long id)
         {
              t = await appData.Items.FirstOrDefaultAsync(i => i.Id == id);
             Value = t.RedemtionPrice;
             Name = t.Name;
-            Page();
+         return Page();
         }
 
         public async Task OnPostAsync()

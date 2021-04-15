@@ -28,28 +28,30 @@
                    <td> @i.Id</td>
                    <td>@i.Name</td>
                  
-                      @if(@i.Status=="Archived")
+                      @if(@i.Status=="Expired")
                       {
                          <td>
                          
-                        Archived
+                    Expired
                           
                        </td>   
                       }
                       else
                       {
                        <td>
-                           <a href="/Bet/{@i.Id}">
-                        
-                           Vote!</a>
+                            <a asp-page="/Bet" asp-route-id="@i.Id" class="nav-link">Do bet</a>
                        </td>
-                            }
+                            
 
                             <td>
-                               <a href="/Pay/{@i.Id}">
-                                 Result
-                                </a>
+                                <a asp-page="/Pay" asp-route-id="@i.Id" class="nav-link">Redempt</a>
+                           
+                  
+                       
+         
+                             
                             </td>
+                            }
                     
                 
                </tr>

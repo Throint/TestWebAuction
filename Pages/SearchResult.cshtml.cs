@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using TestRazor.Model;
 using TestRazor.Services;
+using Newtonsoft.Json;
 
 namespace TestRazor.Pages
 {
@@ -15,8 +16,14 @@ namespace TestRazor.Pages
         public List<Item> Items { get; set; }
         public void OnGet()
         {
-            if((ViewData["Found"]!=null)&& ViewData["Found"] is List<Item>)
-            Items = ViewData["Found"] as List<Item>;
+            if ((TempData["Found"] != null))
+            {
+             Items=   JsonConvert.DeserializeObject<List<Item>>(TempData["Found"].ToString());
+            }
+            else
+            {
+                Items = new List<Item>(); 
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using TestRazor.Model;
 using static TestRazor.Model.Item;
+using Newtonsoft.Json;
 
 namespace TestRazor.Pages
 {
@@ -66,9 +67,12 @@ namespace TestRazor.Pages
             if(ToFound!=null)
             {
               
-                var seek = appData.Items.Where(i => i.Name.Contains(ToFound)).Select(i => i).ToList();
+                var seek =await appData.Items.Where(i => i.Name.Contains(ToFound)).Select(i => i).ToListAsync();
+                var str_json = JsonConvert.SerializeObject(seek);
 
-                ViewData["Found"] = seek;
+                TempData["Found"] = str_json;
+
+                //ViewData["Found"] = seek;
                 
             
             }
